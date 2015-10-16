@@ -1,5 +1,5 @@
 # Course Project for "Getting and Cleaning Data"
-### Following tasks are completed by the R codes enclosed
+### Following tasks are completed by the R scripts enclosed
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -7,7 +7,10 @@
 4. Appropriately labels the data set with descriptive variable names. 
 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-### Explanations on R scripts
+### A tidy dataset "tidy_data.txt" is generated using the R scripts.
+### A codebook for "tidy_data.txt" can be found in the repo: CodeBook.md.
+
+### Explanations on R scripts of "ruan_analysis.R"
 Deatiled R scripts can be found in "run_analysis.R" in the repo.
 In additon to the "base" package, "dplyr" and "Hmisc" packages are used for related functions.
 There are six sections in the R scripts:

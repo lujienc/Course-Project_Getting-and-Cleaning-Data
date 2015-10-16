@@ -9,18 +9,18 @@
 
 ### Explanations on R scripts
 Deatiled R scripts can be found in "run_analysis.R" in the repo.
-In additon the "base" package, "dplyr" and "Hmisc" packages are used for related functions.
+In additon to the "base" package, "dplyr" and "Hmisc" packages are used for related functions.
 There are six compoents in the R scripts:
 
-##### Section 1
+##### Section 1 (Feature names)
 This section completes three tasks:
 
 1. Read 561 feature names from a txt file.
 2. Ensure 561 unique feature names using the "make.names()".
 3. Double-check and ensure that there are 561 unique feature names.
 
-##### Section 2
-This section completes five tasks:
+##### Section 2 (Training set)
+This section completes six tasks:
 
 1. Read subject IDs from a text file for the training set.
 2. Read activity IDs from a text file for the training set.
@@ -29,70 +29,39 @@ This section completes five tasks:
 5. Combine the three datasets as the training dataset.
 6. Genreate a new indicator in the training dataset: "trainortest" with assinged value of 1
 
+##### Section 3 (Testing set)
+This section completes six tasks:
 
-4. Read subject labels form a txt file for the training set
-5. Read activity labels from a txt file for the training set
-6. Read training data from a txt file
-7. Rename all varialbes
-8. Merge the three data sets for the training set
-tsubid <- read.table("./train/subject_train.txt", header = FALSE)
-tactid <- read.table("./train/y_train.txt", header = FALSE)
-trainr <- read.table("./train/X_train.txt", header = FALSE)
+1. Read subject IDs from a text file for the testing set.
+2. Read activity IDs from a text file for the testing set.
+3. Read testing data from a text file.
+4. Assign names to all 563 variables: "subjectid" + "activityid" + 561 features
+5. Combine the three datasets as the training dataset.
+6. Genreate a new indicator in the training dataset: "trainortest" with assinged value of 2
 
-names(tsubid) <- "subjectid"
-names(tactid) <- "activityid"
-names(trainr) <- vnames
+##### Section 4 (Combined dataset)
+This section completes five tasks:
 
-trainm <- cbind(tsubid, tactid, trainr)
-trainm <- mutate(trainm, trainortest=1)
+1. Append training and testing datasets.
+2. Sort combined dataset using "subjectid" and "activityid".
+3. Select variables with names containing "mean" but without ("angle" or "Freq").
+4. Select variables with names containig "std".
+5. Generate a new dataset including variales with names containing "mean" or "std".
 
-9. Read subject labels form a txt file for the testing set
-10. Read activity labels from a txt file for the testing set
-11. Read training data from a txt file
-12. Rename all varialbes
-13. Merge the three data sets for the testting set
-xsubid <- read.table("./test/subject_test.txt", header = FALSE)
-xactid <- read.table("./test/y_test.txt", header = FALSE)
-xtestr <- read.table("./test/X_test.txt", header = FALSE)
+##### Section 5 (Varialbe names)
+This section completes two tasks:
 
-names(xsubid) <- "subjectid"
-names(xactid) <- "activityid"
-names(xtestr) <- vnames
+1. Make "activityid" a factor and name its values: six activities.
+2. Make "trainortest" a factor and anme its values: training vs. testing data.
 
-xtestm <- cbind(xsubid, xactid, xtestr)
-xtestm <- mutate(xtestm, trainortest=2)
+##### Section 6 (New tidy data)
+This section completes three tasks:
 
-14. Append training and testing data sets
-15. Sort appended data set using Subject and Accitivity IDs
-16. Select measures on the mean and standard deviation for each measurement
-17. Select measures with both information on mean and standard deviation
-18. Varialbes containing "angle" & "Freq" have no corresponding infomration on standard deviation, thus dropped
-txfull <- rbind(trainm, xtestm)
-txselect1 <- select(txfull, activityid, subjectid, trainortest, grep("mean", names(txfull), ignore.case = TRUE))
-txselect1 <- select(txselect1, -grep("angle", names(txselect1), ignore.case = TRUE))
-txselect1 <- select(txselect1, -grep("Freq", names(txselect1), ignore.case = TRUE))
-txselect2 <- select(txfull, grep("std", names(txfull), ignore.case = TRUE))
-txselect <- cbind(txselect1, txselect2)
+1. Average each varialbe for each subject and each activity.
+2. Clean variable names: drop dots, ensure lowercases, drop redundant information
+3. Export the new tiday dataset as a txt file with 69 variables: "subjectid" + "activityid" + "trainortest" + 66 mean features
 
-19. Name activities
-20. Name data sources: training vs. testing sets
-actname <- read.table("activity_labels.txt", header = FALSE)
-txselect$activityid <- factor(txselect$activityid, levels = c(1,2,3,4,5,6), labels = actname$V2)
-txselect$trainortest <- factor(txselect$trainortest, levels = c(1, 2), labels = c("Trainingset", "Testingset"))
-
-21. Average of each variable for each activity and each subject
-22. Clean varialbe names: drop dots, all in lowercases, drop redundant information
-23. Export a txt file for the new tidy data set 
-txselect$trainortest <- as.numeric(txselect$trainortest)
-tidynew <- txselect %>%
-        arrange(subjectid, activityid) %>%
-        group_by(subjectid, activityid) %>%
-        summarize_each(funs(mean))
-tidynew$trainortest <- factor(tidynew$trainortest, levels = c(1, 2), labels = c("Trainingset", "Testingset"))
-
-cnames <- names(tidynew)
-cnames <- tolower(gsub(".", "", cnames, fixed = TRUE))
-cnames <- sub("fbodybody", "fbody", cnames, fixed = TRUE)
-names(tidynew) <- cnames
-
-write.table(tidynew, file = "tidy_data.txt", row.names = FALSE)
+##### The new dataset is tidy because in the dataset:
+1. Each variable forms a column
+2. Each observation forms a row
+3. Each type of observational unit forms a table

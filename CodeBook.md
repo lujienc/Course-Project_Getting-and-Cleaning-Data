@@ -21,6 +21,7 @@
 1. tbodyacc/x/y/z
 2. tgravityacc/x/y/z
 3. tbodygyrox/y/z
+
 ###### Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals. Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm. 
 4. tbodyaccjerkx/y/z
 5. tbodygyrojerkx/y/z
@@ -29,6 +30,7 @@
 8. tbodyaccjerkmag
 9. tbodygyromag
 10. tbodygyrojerkmag
+
 ###### Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing
 11. fbodyaccx/y/z
 12. fbodyaccjerkx/y/z
@@ -39,15 +41,15 @@
 17. fbodygyrojerkmag
 
 ###### Then the means and standard deviations of the aforementioned feautres are (1) selected, (2) averaged for each activity of each volunteer, and (3) saved in "tidy_data.txt".
-1. All measures are numeric variables.
-2. Altogether there are 33 mean-related measures and 33 standard-deviation-related measures.
-3. Measures with names containing "mean" are the mean of the aforementined features.
-4. Measures with names containing "std" are the standard devaition of the aforementioned features.
-5. Measures with names starting with "t" are time domain measures.
-6. Measures with names starting with "f" are Fast Fourier Transform (FFT) transformed measures.
-7. Measures with names containing "bodyacc" are body accelerometer signal measures.
-8. Measures with names containing "gravityacc" are gravity accelerometer signal measures
-9. Measures with names containing "gyro" are gyroscope signal measures.
-10. Measures with names containing "jerk" are Jerk signal measures.
-11. Measures with names containing "mag" are magnitude measures of dimensional signals using the the Euclidean norm.
-12. Measures with names containing "x", "y", and "z" are used to differentiate between signals along the 3 axials. 
+* All measures are numeric variables.
+* Altogether there are 33 mean-related measures and 33 standard-deviation-related measures.
+* Measures with names containing "mean" are the mean of the aforementined features.
+* Measures with names containing "std" are the standard devaition of the aforementioned features.
+* Measures with names starting with "t" are time domain measures.
+* Measures with names starting with "f" are Fast Fourier Transform (FFT) transformed measures.
+* Measures with names containing "bodyacc" are body accelerometer signal measures.
+* Measures with names containing "gravityacc" are gravity accelerometer signal measures
+* Measures with names containing "gyro" are gyroscope signal measures.
+* Measures with names containing "jerk" are Jerk signal measures.
+* Measures with names containing "mag" are magnitude measures of dimensional signals using the the Euclidean norm.
+* Measures with names containing "x", "y", and "z" are used to differentiate between signals along the 3 axials. 

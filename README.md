@@ -10,7 +10,7 @@
 ### Explanations on R scripts
 Deatiled R scripts can be found in "run_analysis.R" in the repo.
 In additon to the "base" package, "dplyr" and "Hmisc" packages are used for related functions.
-There are six compoents in the R scripts:
+There are six sections in the R scripts:
 
 ##### Section 1 (Feature names)
 This section completes three tasks:
@@ -52,7 +52,7 @@ This section completes five tasks:
 This section completes two tasks:
 
 1. Make "activityid" a factor and name its values: six activities.
-2. Make "trainortest" a factor and anme its values: training vs. testing data.
+2. Make "trainortest" a factor and name its values: indicator of training vs. testing data.
 
 ##### Section 6 (New tidy data)
 This section completes three tasks:

@@ -6,17 +6,26 @@
 4. Appropriately labels the data set with descriptive variable names. 
 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-### R codes
-setwd("D:/Data Science Certificate/Course 3_Getting and Cleaning Data/Project")
-library(dplyr)
-library(Hmisc)
+### Explanations on R scripts
+Deatiled R scripts can be found in "run_analysis.R" in the repo.
+In additon the "base" package, "dplyr" and "Hmisc" packages are used for related functions.
+There are six compoents in the R scripts:
 
-1. Read variable names from a txt file
-2. Force unique column names
-3. Make sure there are 561 unique names for all documented features
-vlabel <- read.table("features.txt", header = FALSE)
-vnames <- make.names(vlabel$V2, unique = TRUE)
-length(unique(vnames))
+##### Section 1
+This section completes three tasks:
+1. Read 561 feature names from a txt file.
+2. Ensure 561 unique feature names using the "make.names()".
+3. Double-check and ensure that there are 561 unique feature names.
+
+##### Section 2
+This section completes five tasks:
+1. Read subject IDs from a text file for the training set.
+2. Read activity IDs from a text file for the training set.
+3. Read training data from a text file.
+4. Assign names to all 563 variables: "subjectid" + "activityid" + 561 features
+5. Combine the three datasets as the training dataset.
+6. Genreate a new indicator in the training dataset: "trainortest" with assinged value of 1
+
 
 4. Read subject labels form a txt file for the training set
 5. Read activity labels from a txt file for the training set

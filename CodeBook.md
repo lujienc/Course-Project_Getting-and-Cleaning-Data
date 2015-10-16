@@ -11,20 +11,34 @@
 7. There are 180 observations in the dataset: 6 activites for each of the 30 volunteers
  
 #### Variable information
-###### Subject, activity, and data source indicators
+##### Subject, activity, and data source indicators
 1. "subjectid": an integer varialbe, raning from 1 to 30, IDs of each volunteer.
 2. "activityid": a factor variables, with 6 levels for walking, walking_upstairs, walking_downstairs, sitting, standing, laying.
 3. "trainortest": a factor varialbes, with 2 levels for whehter the information was collected from training or testing data.
 
-###### Measures
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+##### Measures
+######The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals. These time domain signals were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals using another low pass Butterworth filter with a corner frequency of 0.3 Hz.
+1. tbodyacc/x/y/z
+2. tgravityacc/x/y/z
+3. tbodygyrox/y/z
+###### Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals. Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm. 
+4. tbodyaccjerkx/y/z
+5. tbodygyrojerkx/y/z
+6. tbodyaccmag
+7. tgravityaccmag
+8. tbodyaccjerkmag
+9. tbodygyromag
+10. tbodygyrojerkmag
+###### Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing
+11. fbodyaccx/y/z
+12. fbodyaccjerkx/y/z
+13. fbodygyrox/y/z
+14. fbodyaccmag
+15. fbodyaccjerkmag
+16. fbodygyromag
+17. fbodygyrojerkmag
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
-
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. 
-
-The means and standard deviations of the aforementioned feautres are (1) selected, (2) averaged for each activity of each volunteer, and (3) saved in "tidy_data.txt".
-
+###### Then the means and standard deviations of the aforementioned feautres are (1) selected, (2) averaged for each activity of each volunteer, and (3) saved in "tidy_data.txt".
 1. All measures are numeric variables.
 2. Altogether there are 33 mean-related measures and 33 standard-deviation-related measures.
 3. Measures with names containing "mean" are the mean of the aforementined features.

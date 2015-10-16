@@ -1,5 +1,6 @@
 # Course Project for "Getting and Cleaning Data"
 ### Following tasks are completed by the R codes enclosed
+
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
 3. Uses descriptive activity names to name the activities in the data set
@@ -13,12 +14,14 @@ There are six compoents in the R scripts:
 
 ##### Section 1
 This section completes three tasks:
+
 1. Read 561 feature names from a txt file.
 2. Ensure 561 unique feature names using the "make.names()".
 3. Double-check and ensure that there are 561 unique feature names.
 
 ##### Section 2
 This section completes five tasks:
+
 1. Read subject IDs from a text file for the training set.
 2. Read activity IDs from a text file for the training set.
 3. Read training data from a text file.
